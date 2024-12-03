@@ -1,0 +1,23 @@
+# macOS
+**.DS_Store
+
+# JetBrains
+.idea/
+
+# Python
+**__pycache__
+**.pytest_cache
+
+# environment
+*.env*
+env*
+.venv
+venv
+.venv*/
+venv*/
+.python-version
+.python-venv
+
+# testing
+tests/*.json
+tests/**/*.html
