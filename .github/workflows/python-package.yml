@@ -37,7 +37,10 @@ jobs:
       run: uv sync --all-extras --dev
 
     - name: Lint code
-      run: ruff check .
+      uses: astral-sh/ruff-action@v1
+      with:
+        version: 0.8.1
+        args: "check ."
 
     - name: Check code security
       run: bandit -c pyproject.toml -r .
