@@ -43,7 +43,7 @@ jobs:
         args: "check ."
 
     - name: Check code security
-      run: bandit -c pyproject.toml -r .
+      run: uv run bandit -c pyproject.toml -r .
         
     #- name: Run tests
     #  run: uv run pytest tests
