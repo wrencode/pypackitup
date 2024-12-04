@@ -25,8 +25,6 @@ jobs:
     - name: Install uv
       uses: astral-sh/setup-uv@v4
       with:
-        # Install a specific version of uv
-        version: "0.5.5"
         enable-cache: true
         cache-dependency-glob: "uv.lock"
 
@@ -39,7 +37,6 @@ jobs:
     - name: Lint code
       uses: astral-sh/ruff-action@v1
       with:
-        version: 0.8.1
         args: "check ."
 
     - name: Check code security
