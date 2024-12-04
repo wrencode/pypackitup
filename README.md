@@ -246,7 +246,7 @@ make deploy
 Create a second git commit with updated version number and documentation:
 ```shell
 git add .
-git commit -m 'update version number and docs'
+git commit -m 'updated version number and documentation'
 ```
 
 &nbsp;
