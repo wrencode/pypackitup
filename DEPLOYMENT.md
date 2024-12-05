@@ -127,12 +127,12 @@ git push origin --tags
 
 * *(Optional)* Test deployment by building the PyPI packages, recreating the documentation, and deploying to Test PyPI:
 ```shell
-make test_deploy
+make uv_test_deploy
 ```
 
 * Deploy the package by building it, recreating the documentation, and deploying the package to PyPI:
 ```shell
-make deploy
+make uv_deploy
 ```
 
 * Create a second git commit with updated version number and documentation:
