@@ -5,7 +5,7 @@ authors = [
     { name="Wren J. Rudolph for Wrencode, LLC", email="dev@wrencode.com" },
 ]
 license = { text = "MIT" }
-description = "Template for developing Python packages."
+description = "Template repository for developing Python packages."
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [

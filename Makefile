@@ -51,10 +51,10 @@ test_deploy: docs verify_build ## Deploy PyPI package to Test PyPI with Twine.
 	twine upload -r testpypi dist/*
 
 uv_test_deploy: docs verify_build ## Deploy PyPI package to Test PyPI with uv.
-	export UV_PUBLISH_URL=https://test.pypi.org/legacy/ && export UV_PUBLISH_TOKEN=$$(python -c "import os; from dotenv import load_dotenv; load_dotenv(); print(os.environ.get('UV_PUBLISH_TOKEN'))") && uv publish
+	export UV_PUBLISH_URL=https://test.pypi.org/legacy/ && export UV_PUBLISH_TOKEN=$$(python -c "import os; from dotenv import load_dotenv; load_dotenv(); print(os.environ.get('TEST_UV_PUBLISH_TOKEN'))") && uv publish
 
 deploy: docs verify_build ## Deploy PyPI package to PyPI with Twine.
 	twine upload dist/*
 
 uv_deploy: docs verify_build ## Deploy PyPI package to PyPI with uv.
-	export UV_PUBLISH_URL=https://test.pypi.org/legacy/ && source .env && uv publish --token ${UV_PUBLISH_TOKEN}
+	export UV_PUBLISH_URL=https://test.pypi.org/legacy/ && export UV_PUBLISH_TOKEN=$$(python -c "import os; from dotenv import load_dotenv; load_dotenv(); print(os.environ.get('UV_PUBLISH_TOKEN'))") && uv publish

@@ -1,7 +1,7 @@
 ### Site metadata ###
 
 site_name: pypackitup - Python Package Template
-site_description: Template for developing Python packages.
+site_description: Template repository for developing Python packages.
 site_url: https://pypackitup.wrencode.dev
 site_author: "Wren J. Rudolph for Wrencode, LLC"
 
@@ -33,9 +33,12 @@ extra_javascript:
 
 nav:
   - Introduction: index.md
-  - pypackitup: readme.md
+  - README: readme.md
+  - Deployment: deployment.md
   - Package:
-    - Hello, World: helloworld.md
+    - Example: helloworld.md
+  - Tests:
+    - PyTest: tests.md
 
 markdown_extensions:
   - toc:

@@ -2,6 +2,15 @@
 
 Template repository for developing Python packages.
 
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wrencode/pypackitup?color=yellowgreen&label=latest%20release&sort=semver)](https://github.com/wrencode/pypackitup/releases/latest)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/wrencode/pypackitup?color=yellowgreen&label=latest%20version&sort=semver)](https://github.com/wrencode/pypackitup/tags)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/wrencode/pypackitup/python-package.yml?color=brightgreen&label=build)](https://github.com/wrencode/pypackitup/actions/workflows/python-package.yml)
+
+[![PyPI](https://img.shields.io/pypi/v/pypackitup.svg?style=flat)](https://pypi.python.org/pypi/pypackitup)
+[![PyPI](https://img.shields.io/pypi/dm/pypackitup.svg?style=flat)](https://pypi.python.org/pypi/pypackitup)
+[![PyPI](https://img.shields.io/pypi/pyversions/pypackitup.svg?style=flat)](https://pypi.python.org/pypi/pypackitup)
+[![PyPI](https://img.shields.io/pypi/l/pypackitup.svg?style=flat)](https://pypi.python.org/pypi/pypackitup)
+
 ---
 
 <sub>***Do you like the Python Package Template? Star the repository on GitHub and please consider helping support its ongoing development:***</sub>
@@ -20,18 +29,23 @@ Template repository for developing Python packages.
 
 <div class="hide-next-element"></div>
 
+&nbsp;
+
+<div class="hide-next-element"></div>
+
 ### Table of Contents
 
 <div class="hide-next-element"></div>
 
 * [About](#about)
     * [Dependencies](#dependencies)
+    * [Toolchain](#toolchain)
 * [Setup](#setup)
     * [Configuration](#configuration)
     * [Version Control](#version-control)
     * [Documentation](#documentation)
+    * [Environment](#environment)
     * [Code](#code)
-* [Deployment](#deployment)
 
 <div class="hide-next-element"></div>
 
@@ -46,6 +60,21 @@ The Python Package Template is an example for Python package development.
 #### Dependencies
 
 The Python Package Template does not have any third-party dependencies to run the code. It has several development dependencies, which can be seen in the package `pyproject.toml`.
+
+<a name="toolchain"></a>
+#### Toolchain
+
+The below tools and resources are used as part of pypackitup:
+
+* [uv](https://github.com/astral-sh/uv) - package management
+* [ruff](https://github.com/astral-sh/ruff) - code linting
+* [bandit](https://bandit.readthedocs.io/en/latest/) - code security
+* [make](https://www.gnu.org/software/make/manual/make.html) - Makefile build automation
+* [MkDocs](https://www.mkdocs.org) - package documentation
+* [python-dotenv](https://github.com/theskumar/python-dotenv) - programmatic access to environment variables defined in a `.env` file
+* [pytest](https://docs.pytest.org/en/stable/) - code testing framework
+* [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
+* [act](https://github.com/nektos/act) - GitHub Actions testing
 
 ---
 
@@ -77,183 +106,15 @@ The below list covers all updates needed in the Python Package Template when usi
 * `docs-mkdocs/*.md`: Add any necessary Markdown (`.md`) files for pages in the mkdocs documentation.
 * `docs-mkdocs/*.svg/*.png/*.jpg/etc.`: Add any necessary images for the mkdocs documentation.
 
+<a name="environment"></a>
+#### Environment
+
+* `.env`: Create a `.env` file from the provided `.env.template` file (run `cp .env.template .env` in the command line) and add any necessary package environment variables.
+
 <a name="code"></a>
 #### Code
 
-* `src/pypackitup/`: Rename this directory to match the project directory and follow the [PEP naming conventions](https://peps.python.org/pep-0008/#package-and-module-names) for the package.
+* `src/pypackitup/`: Rename the source code directory to match the project directory and follow the [PEP naming conventions](https://peps.python.org/pep-0008/#package-and-module-names) for the package.
 * `src/pypackitup/__init__.py`: Update the package `__init__.py` with available imports.
 * `src/pypackitup/*.py`: Add package code.
 * `tests/`: Add tests for package code.
-
----
-
-<a name="deployment"></a>
-### Deployment
-
-*(Optional)* Check `pyproject.toml` for latest dependency versions.
-
-&nbsp;
-
-*(Optional)* Update virtual machine with the latest dependencies (`make update` in Makefile):
-```shell
-uv sync --all-extras --dev
-```
-
-&nbsp;
-
-Lint code with `ruff` (`make lint` in Makefile):
-```shell
-ruff check .
-```
-
-&nbsp;
-
-Check code security with `bandit` (`make secure` in Makefile):
-```shell
-bandit -c pyproject.toml -r .
-```
-
-&nbsp;
-
-*(Optional)* Run *all* `pytest` tests (see following commands for running subsets of tests) (`make test_code` in Makefile):
-```shell
-uv run pytest tests
-```
-
-&nbsp;
-
-*(Optional)* Run *all* `pytest` tests *verbosely*:
-```shell
- uv run pytest -v -s tests
-```
-
-&nbsp;
-
-*(Optional)* Run all tests from `pytest` file:
-```shell
-uv run pytest -v -s tests/test_helloworld.py
-```
-
-&nbsp;
-
-*(Optional)* Run *specific* test from `pytest` file:
-```shell
-uv run pytest -v -s tests/test_helloworld.py -k test_main
-```
-
-&nbsp;
-
-*(Optional)* Test Python support using [act](https://github.com/nektos/act) for GitHub Actions:
-```shell
-act -j build
-```
-
-***Note***: If `act` is unable to locate Docker, make sure that the required `/var/run/docker.sock` symlink exists. If it does not, you can fix it by running:
-```shell
-sudo ln -s "$HOME/.docker/run/docker.sock" /var/run/docker.sock`
-```
-
-***Note***: If you are running macOS on a devices with an M-series chip (Apple Silicon), you will need to specify `linux/amd64` architecture when running `act`:
-```shell
-act --container-architecture linux/amd64 -j build
-```
-
-&nbsp;
-
-*(Optional)* Build the PyPI package independent of deployment:
-```shell
-make build
-```
-
-&nbsp;
-
-*(Optional)* Test packages for PyPI deployment:
-```shell
-make verify_build
-```
-
-&nbsp;
-
-*(Optional)* Check MkDocs documentation by serving it at [http://localhost:8000/](http://localhost:8000/) locally:
-```shell
-make test_docs
-```
-
-&nbsp;
-
-*(Optional)* Build the PyPI package and MkDocs documentation independent of deployment:
-```shell
-make docs
-```
-
-***Note***: Running `make test_docs` from the previous step recreates the documentation without building the PyPI package.
-
-&nbsp;
-
-Create a git commit:
-```shell
-git add .
-git commit -m 'commit message'
-```
-
-&nbsp;
-
-Update the git tag with the new version (`git tag -a [tag_name/version] -m [message]`):
-```shell
-git tag -a v1.0.0 -m 'release message'
-git push origin --tags
-```
-
-&nbsp;
-
-*(Required for initial publication on PyPI as needed)* Register a [new account on PyPI](https://pypi.org/account/register/) (do the same for Test PyPI as needed).
-
-&nbsp;
-
-*(Required for initial publication on PyPI)* Configure [API token authentication for PyPI](https://pypi.org/help/#apitoken) by creating an API token (do the same for Test PyPI as needed) and copy the value of the API token.
-
-&nbsp;
-
-*(Required for initial publication on PyPI)* Create a `.env` file by running `cp .env.template .env` in the command line from the project root directory and paste the PyPI API token from the previous step as the value for `UV_PUBLISH_TOKEN` (this environment variable is used in the Makefile by `uv publish` to [publish the package using uv](https://docs.astral.sh/uv/guides/publish/#publishing-your-package)). 
-
-&nbsp;
-
-*(Optional after initial package publication on PyPI)* Configure a *new* [package-specific PyPI API token](https://pypi.org/manage/project/pypackitup/settings/) and update the above `UV_PUBLISH_TOKEN` environment variable in the `.env` to use it. 
-
-&nbsp;
-
-*(Optional if using Twine)* Install `twine` (if not already installed):
-```shell
-uv add twine
-```
-
-&nbsp;
-
-*(Optional)* Test deployment by building the PyPI packages, recreating the documentation, and deploying to Test PyPI:
-```shell
-make test_deploy
-```
-
-&nbsp;
-
-Deploy the package by building it, recreating the documentation, and deploying the package to PyPI:
-```shell
-make deploy
-```
-
-&nbsp;
-
-Create a second git commit with updated version number and documentation:
-```shell
-git add .
-git commit -m 'updated version number and documentation'
-```
-
-&nbsp;
-
-Update package git repository:
-```shell
-git push
-```
-
----
