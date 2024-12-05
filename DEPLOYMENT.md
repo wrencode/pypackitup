@@ -24,7 +24,7 @@
 
 * *(Required for initial publication on PyPI)* Create a `.env` file by running `cp .env.template .env` in the command line from the project root directory and paste the PyPI API token from the previous step as the value for `UV_PUBLISH_TOKEN` (this environment variable is used in the Makefile by `uv publish` to [publish the package using uv](https://docs.astral.sh/uv/guides/publish/#publishing-your-package)).
 
-* *(Optional after initial package publication on PyPI)* Configure a *new* [package-specific PyPI API token](https://pypi.org/manage/project/pypackitup/settings/) and update the above `UV_PUBLISH_TOKEN` environment variable in the `.env` to use it.
+* *(Optional after initial package publication on PyPI)* Configure a *new* [package-specific PyPI API token](https://pypi.org/help/#apitoken) and update the above `UV_PUBLISH_TOKEN` environment variable in the `.env` to use it.
 
 * *(Optional if using Twine)* Install `twine` (if not already installed) with `uv add twine`.
 
